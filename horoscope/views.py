@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+
 # Create your views here.
 
 
@@ -18,6 +19,18 @@ zodiac_dict = {
     'aquarius': 'Водолей - одиннадцатый знак зодиака, планеты Уран и Сатурн (с 21 января по 19 февраля).',
     'pisces': 'Рыбы - двенадцатый знак зодиака, планеты Юпитер (с 20 февраля по 20 марта).',
 }
+
+
+def get_yyyy_converters(request, sign_zodiac):
+    return HttpResponse(f'Вы передали число из 4х цифр - {sign_zodiac}')
+
+
+def get_my_float_converters(request, sign_zodiac):
+    return HttpResponse(f'Вы передали вещественное число - {sign_zodiac}')
+
+
+def get_my_date_converters(request, sign_zodiac):
+    return HttpResponse(f'Вы передали дату - {sign_zodiac}')
 
 
 def index(request):
@@ -41,8 +54,6 @@ def index(request):
     return HttpResponse(response)
 
 
-
-
 def get_info_about_sign_zodiac(request, sign_zodiac: str):
     description = zodiac_dict.get(sign_zodiac, None)
     if description:
@@ -55,11 +66,9 @@ def get_info_about_sign_zodiac_by_number(request, sign_zodiac: int):
     zodiacs = list(zodiac_dict)
     if sign_zodiac > len(zodiacs):
         return HttpResponseNotFound(f'Неправильный порядковый номер знака зодиака - {sign_zodiac}')
-    name_zodiac = zodiacs[sign_zodiac-1]
+    name_zodiac = zodiacs[sign_zodiac - 1]
     redirect_url = reverse('horname', args=[name_zodiac])
     return HttpResponseRedirect(redirect_url)
-
-
 
 # Динамический URL
 # def get_info_about_sign_zodiac(request, sign_zodiac):
