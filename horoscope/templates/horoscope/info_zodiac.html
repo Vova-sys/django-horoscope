@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Гороскоп для {{ sign }}</title>
+    <title>Гороскоп для {{ sign|capfirst }}</title>
 </head>
 <body>
     <h1>Приложение Гороскоп</h1>
-    <h2> {{ description_zodiac }} </h2>
+    <h2> {{ description_zodiac|title }} </h2>
 <p> Экземпляр класса {{ my_class }} {{ my_class.age }} </p>
+<p> число {{ my_int|add:150 }} </p>
+
 </body>
 </html>
