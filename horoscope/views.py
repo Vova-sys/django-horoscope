@@ -68,7 +68,7 @@ class Person:
 def get_info_about_sign_zodiac(request, sign_zodiac: str):
     description = zodiac_dict.get(sign_zodiac)
     data = {
-        'description_zodiac': description,
+        'description': description,
         'sign': sign_zodiac,
         'my_class': Person('Will', 55),
         'my_int': 100
