@@ -37,23 +37,11 @@ def get_my_date_converters(request, sign_zodiac):
 
 def index(request):
     zodiacs = list(zodiac_dict)
-    """
-    <ol>
-        <li>aries</li> 
-        <li>taurus</li>
-        <li>gemini</li>
-        ...
-    </ol>
-    """
-    result = ''
-    for sign in zodiacs:
-        redirect_path = reverse('horname', args=[sign])
-        result += f"<li> <a href='{redirect_path}'> {sign.title()} </a> </li>"
-    response = f"""
-    <ul>
-      {result}
-    </ul>"""
-    return HttpResponse(response)
+    # f"<li> <a href='{redirect_path}'> {sign.title()} </a> </li>"
+    context = {
+        'zodiacs' : zodiacs
+    }
+    return render(request, 'horoscope/index.html', context=context)
 
 
 @dataclass
