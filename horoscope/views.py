@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
-from django.template.loader import render_to_string
-from dataclasses import dataclass
 
 # Create your views here.
 
@@ -44,22 +42,11 @@ def index(request):
     return render(request, 'horoscope/index.html', context=context)
 
 
-@dataclass
-class Person:
-    name: str
-    age: int
-
-    def __str__(self):
-        return f'This is {self.name}'
-
-
 def get_info_about_sign_zodiac(request, sign_zodiac: str):
     description = zodiac_dict.get(sign_zodiac)
     data = {
         'description': description,
         'sign': sign_zodiac,
-        'my_class': Person('Will', 55),
-        'my_int': 100
     }
     return render(request, 'horoscope/info_zodiac.html', context=data)
 

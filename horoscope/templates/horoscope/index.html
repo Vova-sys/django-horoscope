@@ -5,12 +5,14 @@
 {% endblock %}
 
 {% block content %}
+    {% include 'includes/navbar.html' %}
     <h2> Content from index.html</h2>
     <ul>
         {% for zodiac in zodiacs %}
         <li><a href="{% url 'horname' sign_zodiac=zodiac%}">{{ zodiac|title }}</a></li>
         {% endfor %}
     </ul>
+    {% include 'includes/navbar.html' %}
 {% endblock %}
 
 
