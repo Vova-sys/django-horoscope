@@ -39,7 +39,7 @@ def index(request):
     zodiacs = list(zodiac_dict)
     # f"<li> <a href='{redirect_path}'> {sign.title()} </a> </li>"
     context = {
-        'zodiacs' : zodiacs
+        'zodiacs': zodiacs
     }
     return render(request, 'horoscope/index.html', context=context)
 
